@@ -33,9 +33,9 @@ void jal(instruction_t i, proc_t *p);
 
 static inline void (*get_j_instruction(uint32_t opcode)) (instruction_t, proc_t *) {
 	switch (opcode) {
-		case 0b000011:
+		case 0x3:
 			return &jal;
-		case 0b000010:
+		case 0x2:
 			return &j;
 		default:
 			fprintf(stderr, "Got invalid opcode value in j instruction: %d\n", opcode);
@@ -44,21 +44,21 @@ static inline void (*get_j_instruction(uint32_t opcode)) (instruction_t, proc_t 
 }
 static inline void (*get_r_instruction(uint32_t opcode)) (instruction_t, proc_t *) {
 	switch (opcode) {
-		case 0b100000:
+		case 0x20:
 			return &add;
-		case 0b100010:
+		case 0x22:
 			return &sub;
-		case 0b100101:
+		case 0x25:
 			return &or;
-		case 0b100100:
+		case 0x24:
 			return &and;
-		case 0b101010:
+		case 0x2a:
 			return &slt;
-		case 0b000000:
+		case 0x0:
 			return &sll;
-		case 0b000010:
+		case 0x2:
 			return &srl;
-		case 0b001000:
+		case 0x8:
 			return &jr;
 		default:
 			fprintf(stderr, "Got invalid opcode value in r instruction: %d\n", opcode);
@@ -69,23 +69,23 @@ static inline void (*get_r_instruction(uint32_t opcode)) (instruction_t, proc_t 
 
 static inline void (*get_i_instruction(uint32_t function)) (instruction_t, proc_t *) {
 	switch (function) {
-		case 0b100011:
+		case 0x23:
 			return &lw;
-		case 0b101011:
+		case 0x2b:
 			return &sw;
-		case 0b001000:
+		case 0x8:
 			return &addi;
-		case 0b001101:
+		case 0xd:
 			return &ori;
-		case 0b001100:
+		case 0xc:
 			return &andi;
-		case 0b001010:
+		case 0xa:
 			return &slti;
-		case 0b000100:
+		case 0x4:
 			return &beq;
-		case 0b000101:
+		case 0x5:
 			return &bne;
-		case 0b001111:
+		case 0xf:
 			return &lui;
 		default:
 			fprintf(stderr, "Got invalid function value in i instruction: %d\n", function);
