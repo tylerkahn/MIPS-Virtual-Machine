@@ -24,13 +24,13 @@ typedef struct {
 				int32_t s_immediate : 16; // sign extended
 				uint32_t z_immediate : 16;// zero extended
 			};
-			uint32_t rt : 5;
-			uint32_t rs : 5;
-			uint32_t opcode : 6;
+			uint32_t _rt : 5;		// underscores are prepended to prevent clang from complaining about
+			uint32_t _rs : 5;		// redeclared members, gcc don't care. given that the alignment is the same,
+			uint32_t _opcode : 6;	// rt, rs, and opcode refer to the same part in memory as their underscored counterparts
 		};
 		struct { // J Type
 			uint32_t instr_index : 26;
-			uint32_t opcode : 6;
+			uint32_t __opcode : 6;
 		};
 	};
 } instruction_t;
