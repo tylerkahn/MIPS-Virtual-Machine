@@ -1,6 +1,6 @@
-CC := gcc
+CC := clang
 WARNINGS := -Wall -Werror
-FLAGS := $(WARNINGS) --std=gnu99 -DDEBUG
+FLAGS := $(WARNINGS) --std=gnu99 
 
 OBJECTS := instructions.o
 
