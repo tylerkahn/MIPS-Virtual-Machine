@@ -18,19 +18,13 @@ void load_program(int fd, proc_t *p) {
 	f = mmap(0, fsize, PROT_READ, MAP_SHARED, fd, 0);
 
 	for (int i = 0; *f != '\n'; f += 33, i++) {
-		char n[33];
-		memcpy(n, f, 32);
-		n[32] = 0;
-		p->text_32[i] = atoi_binary(n);
+		p->text_32[i] = atoi_binary(f);
 	}
 
 	f++;
 
 	for (int i = 0; *f != '\0'; f += 33, i++) {
-		char n[33];
-		memcpy(n, f, 32);
-		n[32] = 0;
-		p->data_32[i] = atoi_binary(n);
+		p->data_32[i] = atoi_binary(f);
 	}
 }
 void print_machine(proc_t *p) {
