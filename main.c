@@ -84,18 +84,8 @@ int main(int argc, char *argv[]) {
 			print_machine(&p);
 			return 0;
 		}
-#ifdef DEBUG
-		printf("Line num: %d\t", p.pc/4 + 1);
-#endif
 		void (*op)(instruction_t, proc_t*) = get_instruction(i);
 		op(i, &p);
-#ifdef DEBUG
-		printf("\n");
-		print_machine(&p);
-		printf("xx.\t$ra\t  0x%08x\n", p.ra);
-		getchar();
-#endif
-
 	}
 
 	return 0;
