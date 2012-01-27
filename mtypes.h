@@ -37,12 +37,7 @@ typedef struct {
 
 typedef struct {
 	union {
-		uint8_t mem[MEM_SIZE];
 		uint32_t mem_32[MEM_SIZE/4];
-		struct {
-			uint8_t text_8[TEXT_SIZE];
-			uint8_t data_8[DATA_SIZE];
-		};
 		struct {
 			uint32_t text_32[TEXT_SIZE/4];
 			uint32_t data_32[DATA_SIZE/4];
